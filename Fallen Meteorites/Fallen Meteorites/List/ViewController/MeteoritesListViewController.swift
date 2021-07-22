@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  MeteoritesListViewController.swift
 //  Fallen Meteorites
 //
 //  Created by Marie Re on 21.07.2021.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class MeteoritesListViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
