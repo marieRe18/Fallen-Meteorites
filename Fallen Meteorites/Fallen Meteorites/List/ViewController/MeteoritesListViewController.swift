@@ -26,9 +26,6 @@ class MeteoritesListViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: .default, reuseIdentifier: "MeteoritesListIemCell")
-        if let item = viewModel.meteorites[safe: indexPath.row] {
-            cell.textLabel?.text = item.name
-        }
-        return cell
+        return viewModel.setUpCell(cell: cell, for: indexPath.row)
     }
 }
