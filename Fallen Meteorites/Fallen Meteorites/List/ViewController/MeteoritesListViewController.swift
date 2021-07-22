@@ -9,11 +9,26 @@ import UIKit
 
 class MeteoritesListViewController: UITableViewController {
 
+    private var viewModel: MeteoritesListViewModel
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
     }
 
+    required init?(coder: NSCoder) {
+        self.viewModel = MeteoritesListViewModel()
+        super.init(coder: coder)
+    }
 
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return viewModel.meteorites.count
+    }
+
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = UITableViewCell(style: .default, reuseIdentifier: "MeteoritesListIemCell")
+        if let item = viewModel.meteorites[safe: indexPath.row] {
+            cell.textLabel?.text = item.name
+        }
+        return cell
+    }
 }
-
