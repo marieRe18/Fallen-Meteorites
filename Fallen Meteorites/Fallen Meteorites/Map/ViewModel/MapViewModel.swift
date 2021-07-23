@@ -6,5 +6,16 @@
 //
 
 final class MapViewModel {
-    var meteorite: Meteorite?
+    var meteorite: Meteorite? {
+        didSet {
+            guard let safeMeteorite = meteorite else { return }
+
+            meteoritesPlace = Place(
+                meteoriteName: safeMeteorite.name,
+                locationName: "Tady",
+                coordinate: safeMeteorite.location
+            )
+        }
+    }
+    var meteoritesPlace: Place?
 }

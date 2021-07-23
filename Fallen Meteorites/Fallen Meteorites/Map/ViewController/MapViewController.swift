@@ -33,5 +33,12 @@ final class MapViewController: UIViewController {
     private func setUpLayout() {
         // -MR- Comment: dodelat - lokace
         location.text = meteorite?.name
+        setLocation()
+    }
+
+    private func setLocation() {
+        guard let place = viewModel.meteoritesPlace else { return }
+        mapView.addAnnotation(place)
+        mapView.centerToCoordinate(place.coordinate)
     }
 }

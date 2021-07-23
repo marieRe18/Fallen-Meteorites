@@ -19,6 +19,7 @@
 		2F80EC5126AA9C3B000DCF79 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F80EC5026AA9C3B000DCF79 /* Main.storyboard */; };
 		2F80EC5326AA9D29000DCF79 /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F80EC5226AA9D29000DCF79 /* MapViewModel.swift */; };
 		2F80EC5626AAA6AB000DCF79 /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F80EC5526AAA6AB000DCF79 /* Place.swift */; };
+		2F80EC5926AAAA1E000DCF79 /* MKMapView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F80EC5826AAAA1E000DCF79 /* MKMapView+Extension.swift */; };
 		F0933525F23CAA979FFE447D /* Pods_Fallen_Meteorites.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E841415454AA586D496734AC /* Pods_Fallen_Meteorites.framework */; };
 /* End PBXBuildFile section */
 
@@ -37,6 +38,7 @@
 		2F80EC5026AA9C3B000DCF79 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		2F80EC5226AA9D29000DCF79 /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
 		2F80EC5526AAA6AB000DCF79 /* Place.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Place.swift; sourceTree = "<group>"; };
+		2F80EC5826AAAA1E000DCF79 /* MKMapView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MKMapView+Extension.swift"; sourceTree = "<group>"; };
 		4920C913B07C35BEBF30D451 /* Pods-Fallen Meteorites.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fallen Meteorites.debug.xcconfig"; path = "Target Support Files/Pods-Fallen Meteorites/Pods-Fallen Meteorites.debug.xcconfig"; sourceTree = "<group>"; };
 		B0F1B9EB3B8E5DFFAB118F65 /* Pods-Fallen Meteorites.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fallen Meteorites.release.xcconfig"; path = "Target Support Files/Pods-Fallen Meteorites/Pods-Fallen Meteorites.release.xcconfig"; sourceTree = "<group>"; };
 		E841415454AA586D496734AC /* Pods_Fallen_Meteorites.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Fallen_Meteorites.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -85,9 +87,9 @@
 			isa = PBXGroup;
 			children = (
 				2F80EC2826A7FCEF000DCF79 /* AppDelegate.swift */,
-				2F80EC4926A99422000DCF79 /* Collection+Extension.swift */,
 				2F80EC4226A972B9000DCF79 /* List */,
 				2F80EC4F26AA963E000DCF79 /* Map */,
+				2F80EC5A26AAAA25000DCF79 /* Extensions */,
 				2F80EC3426A7FCF2000DCF79 /* Assets.xcassets */,
 				2F80EC5026AA9C3B000DCF79 /* Main.storyboard */,
 				2F80EC3626A7FCF2000DCF79 /* LaunchScreen.storyboard */,
@@ -163,6 +165,15 @@
 				2F80EC5526AAA6AB000DCF79 /* Place.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		2F80EC5A26AAAA25000DCF79 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				2F80EC4926A99422000DCF79 /* Collection+Extension.swift */,
+				2F80EC5826AAAA1E000DCF79 /* MKMapView+Extension.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		3AE46486C328CB8EB36B9A23 /* Frameworks */ = {
@@ -272,6 +283,7 @@
 				2F80EC3326A7FCEF000DCF79 /* Fallen_Meteorites.xcdatamodeld in Sources */,
 				2F80EC4A26A99422000DCF79 /* Collection+Extension.swift in Sources */,
 				2F80EC4626A974AC000DCF79 /* Meteorite.swift in Sources */,
+				2F80EC5926AAAA1E000DCF79 /* MKMapView+Extension.swift in Sources */,
 				2F80EC4426A972F5000DCF79 /* MeteoritesListViewModel.swift in Sources */,
 				2F80EC2D26A7FCEF000DCF79 /* MeteoritesListViewController.swift in Sources */,
 				2F80EC2926A7FCEF000DCF79 /* AppDelegate.swift in Sources */,
