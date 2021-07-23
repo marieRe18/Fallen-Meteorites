@@ -20,6 +20,7 @@
 		2F80EC5326AA9D29000DCF79 /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F80EC5226AA9D29000DCF79 /* MapViewModel.swift */; };
 		2F80EC5626AAA6AB000DCF79 /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F80EC5526AAA6AB000DCF79 /* Place.swift */; };
 		2F80EC5926AAAA1E000DCF79 /* MKMapView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F80EC5826AAAA1E000DCF79 /* MKMapView+Extension.swift */; };
+		2F80EC5C26AAAF2D000DCF79 /* MeteoriteRequester.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F80EC5B26AAAF2D000DCF79 /* MeteoriteRequester.swift */; };
 		F0933525F23CAA979FFE447D /* Pods_Fallen_Meteorites.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E841415454AA586D496734AC /* Pods_Fallen_Meteorites.framework */; };
 /* End PBXBuildFile section */
 
@@ -39,6 +40,7 @@
 		2F80EC5226AA9D29000DCF79 /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
 		2F80EC5526AAA6AB000DCF79 /* Place.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Place.swift; sourceTree = "<group>"; };
 		2F80EC5826AAAA1E000DCF79 /* MKMapView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MKMapView+Extension.swift"; sourceTree = "<group>"; };
+		2F80EC5B26AAAF2D000DCF79 /* MeteoriteRequester.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeteoriteRequester.swift; sourceTree = "<group>"; };
 		4920C913B07C35BEBF30D451 /* Pods-Fallen Meteorites.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fallen Meteorites.debug.xcconfig"; path = "Target Support Files/Pods-Fallen Meteorites/Pods-Fallen Meteorites.debug.xcconfig"; sourceTree = "<group>"; };
 		B0F1B9EB3B8E5DFFAB118F65 /* Pods-Fallen Meteorites.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fallen Meteorites.release.xcconfig"; path = "Target Support Files/Pods-Fallen Meteorites/Pods-Fallen Meteorites.release.xcconfig"; sourceTree = "<group>"; };
 		E841415454AA586D496734AC /* Pods_Fallen_Meteorites.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Fallen_Meteorites.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -147,6 +149,7 @@
 				2F80EC4D26AA9625000DCF79 /* ViewController */,
 				2F80EC5426AA9D46000DCF79 /* ViewModel */,
 				2F80EC5726AAA6AF000DCF79 /* Model */,
+				2F80EC5B26AAAF2D000DCF79 /* MeteoriteRequester.swift */,
 			);
 			path = Map;
 			sourceTree = "<group>";
@@ -195,6 +198,7 @@
 				2F80EC2126A7FCEF000DCF79 /* Sources */,
 				2F80EC2226A7FCEF000DCF79 /* Frameworks */,
 				2F80EC2326A7FCEF000DCF79 /* Resources */,
+				D6B81633FFAB01C7337C542C /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -273,6 +277,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		D6B81633FFAB01C7337C542C /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Fallen Meteorites/Pods-Fallen Meteorites-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Fallen Meteorites/Pods-Fallen Meteorites-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Fallen Meteorites/Pods-Fallen Meteorites-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -289,6 +310,7 @@
 				2F80EC2926A7FCEF000DCF79 /* AppDelegate.swift in Sources */,
 				2F80EC5626AAA6AB000DCF79 /* Place.swift in Sources */,
 				2F80EC4C26AA9620000DCF79 /* MapViewController.swift in Sources */,
+				2F80EC5C26AAAF2D000DCF79 /* MeteoriteRequester.swift in Sources */,
 				2F80EC5326AA9D29000DCF79 /* MapViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

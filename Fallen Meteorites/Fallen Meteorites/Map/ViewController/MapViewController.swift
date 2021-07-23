@@ -31,7 +31,7 @@ final class MapViewController: UIViewController {
     }
 
     private func setUpLayout() {
-        // -MR- Comment: dodelat - lokace
+        // -MR- Comment: dodelat
         location.text = meteorite?.name
         setLocation()
     }

@@ -7,5 +7,5 @@ target 'Fallen Meteorites' do
 
   # Pods for Fallen Meteorites
   pod 'SwiftLint'
-
+  pod 'Alamofire'
 end
