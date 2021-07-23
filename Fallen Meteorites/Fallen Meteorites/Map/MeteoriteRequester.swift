@@ -7,54 +7,69 @@
 
 import Foundation
 import Alamofire
+import RxSwift
 
+// -MR- Comment: jinam
 public struct ApiUrls {
     public static let nasaLandedMeteorites = "https://data.nasa.gov/resource/gh4g-9sfh.json"
 }
 
 public struct Constants {
     public static let appToken = "X-App-Token"
-    // -MR- Comment: token zabezpecit nekam
+    // -MR- Comment: token do Keychain
     public static let appTokenValue = "ODqdLYKjJDAPpFUCiLnMrhyFy"
+    public static let parsingError = "Error: when parsing response data"
 }
 
 final class MeteoriteRequester {
-    func getMeteorites(sinceYear: Int = 2011) {
-        // -MR- Comment: nepresne, dodelat timestamp creation
-        let yearFilterParameter = ["$where": "year>'2017-01-01T00:00:00.000'"]
+    func getMeteorites(sinceYear: Int = 2011) -> Single<[Meteorite]> {
+        let year = sinceYear - 1
+        let yearFilterParameter = ["$where": "year>'\(year)-12-31T23:59:59.999'"]
 
+        return Single<[Meteorite]>.create(subscribe: { single -> Disposable in
         AF.request(
             ApiUrls.nasaLandedMeteorites,
             parameters: yearFilterParameter,
             encoder: URLEncodedFormParameterEncoder(destination: .queryString),
             headers: [Constants.appTokenValue: Constants.appToken]
         )
-        .validate().responseJSON { response in
-            print(response)
+        .validate().responseJSON(queue: .global(qos: .background)) { response in
+// -MR- Comment: generalizace
+            switch response.result {
+            case .success:
+                print(response)
+                do {
+                    guard let data = response.data else {
+                        DispatchQueue.main.async {
+                            single(.failure(MeteoriteRequesterError.parsingError))
+                        }
+                    }
+                    let decoder = JSONDecoder()
+                    let decoded = try decoder.decode([Meteorite].self, from: data)
+                    DispatchQueue.main.async {
+                        single(.success(decoded))
+                    }
+                } catch {
+                    DispatchQueue.main.async {
+                        single(.failure(MeteoriteRequesterError.parsingError))
+                    }
+                }
+            case let .failure(error):
+                debugPrint(error)
+            }
         }
+            return Disposables.create()
+        })
+    }
+}
 
+enum MeteoriteRequesterError: LocalizedError {
+    case parsingError
 
-
-         // -MR- Comment: remove
-//        let urlWithYearFilter = URL(string: urlStringWithYearFilter.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!)
-//        var request = URLRequest(url: urlWithYearFilter!)
-//        request.setValue("ODqdLYKjJDAPpFUCiLnMrhyFy", forHTTPHeaderField: "X-App-Token")
-//
-//        let task = URLSession.shared.dataTask(with: request) { data, response, error in
-//            guard
-//                let data = data,
-//                error == nil
-//            else {
-//                print(error?.localizedDescription ?? "No data")
-//                return
-//            }
-//
-//            let responseJSON = try? JSONSerialization.jsonObject(with: data, options: [])
-//            if let responseJSON = responseJSON as? [String: Any] {
-//                print(responseJSON)
-//            }
-//        }
-//
-//        task.resume()
+    var errorDescription: String? {
+        switch self {
+        case .parsingError:
+            return Constants.parsingError
+        }
     }
 }
