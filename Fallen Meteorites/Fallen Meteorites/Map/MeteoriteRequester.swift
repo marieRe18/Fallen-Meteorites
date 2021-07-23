@@ -43,6 +43,7 @@ final class MeteoriteRequester {
                         DispatchQueue.main.async {
                             single(.failure(MeteoriteRequesterError.parsingError))
                         }
+                        return
                     }
                     let decoder = JSONDecoder()
                     let decoded = try decoder.decode([Meteorite].self, from: data)

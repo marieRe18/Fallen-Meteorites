@@ -7,12 +7,15 @@
 
 import UIKit
 import CoreLocation
+import RxSwift
 
 final class MeteoritesListViewModel {
     // -MR- Comment: Remove prototype data
 //    private var meteorites = [Meteorite]()
-    var meteorites = [Meteorite]()
     private var meteoriteRequester: MeteoriteRequester
+    private var disposeBag = DisposeBag()
+
+    var meteorites = [Meteorite]()
 
     init() {
         meteoriteRequester = MeteoriteRequester()
@@ -25,6 +28,14 @@ final class MeteoritesListViewModel {
 
     private func setUpMeteorites() {
         meteoriteRequester.getMeteorites()
+            .subscribe(
+                onSuccess: { [weak self] meteorites in
+                    self?.meteorites = meteorites
+                },
+                onFailure: { error in
+                    debugPrint(error.localizedDescription)
+                }
+            ).disposed(by: disposeBag)
     }
 
     func setUpCell(cell: UITableViewCell, for index: Int) -> UITableViewCell {
