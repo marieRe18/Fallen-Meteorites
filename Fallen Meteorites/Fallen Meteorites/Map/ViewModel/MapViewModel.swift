@@ -17,5 +17,6 @@ final class MapViewModel {
             )
         }
     }
+
     var meteoritesPlace: Place?
 }

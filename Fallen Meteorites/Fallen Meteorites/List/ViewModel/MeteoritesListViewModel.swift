@@ -27,11 +27,6 @@ final class MeteoritesListViewModel {
     init() {
         meteoriteRequester = MeteoriteRequester()
         setUpMeteorites()
-        // -MR- Comment: remove
-//        let meteor1 = Meteorite(name: "Dormamu", size: .big, location: CLLocationCoordinate2D(latitude: 16.60, longitude: 49.195))
-//        let meteor2 = Meteorite(name: "Merdok", size: .small, location: CLLocationCoordinate2D(latitude: 16.60, longitude: 49.195))
-//        let meteor3 = Meteorite(name: "Gingle", size: .medium, location: CLLocationCoordinate2D(latitude: 21.282778, longitude: -157.829444))
-//        self.meteorites = [meteor1, meteor2, meteor3]
     }
 
     private func setUpMeteorites() {
@@ -66,5 +61,10 @@ final class MeteoritesListViewModel {
         }
         return cell
     }
-
 }
+
+// -MR- Comment: remove
+//        let meteor1 = Meteorite(name: "Dormamu", size: .big, location: CLLocationCoordinate2D(latitude: 16.60, longitude: 49.195))
+//        let meteor2 = Meteorite(name: "Merdok", size: .small, location: CLLocationCoordinate2D(latitude: 16.60, longitude: 49.195))
+//        let meteor3 = Meteorite(name: "Gingle", size: .medium, location: CLLocationCoordinate2D(latitude: 21.282778, longitude: -157.829444))
+//        self.meteorites = [meteor1, meteor2, meteor3]

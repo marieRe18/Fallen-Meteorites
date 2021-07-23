@@ -22,15 +22,6 @@ class MeteoritesListViewController: UITableViewController {
         viewModel.delegate = self
     }
 
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.meteorites.count
-    }
-
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: .default, reuseIdentifier: "MeteoritesListIemCell")
-        return viewModel.setUpCell(cell: cell, for: indexPath.row)
-    }
-
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard
             let identifier = segue.identifier,
@@ -38,11 +29,20 @@ class MeteoritesListViewController: UITableViewController {
         else { return }
 
         if
-            identifier == segueIdentifiers.goToMap.rawValue,
+            identifier == Constants.segueIdentifiers.goToMap.rawValue,
             let mapViewController = segue.destination as? MapViewController
         {
             mapViewController.meteorite = meteorite
         }
+    }
+
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return viewModel.meteorites.count
+    }
+
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = UITableViewCell(style: .default, reuseIdentifier: "MeteoritesListIemCell")
+        return viewModel.setUpCell(cell: cell, for: indexPath.row)
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -55,8 +55,4 @@ extension MeteoritesListViewController: MeteoritesListViewModelDelegate {
     func refreshData() {
         tableView.reloadData()
     }
-}
-
-enum segueIdentifiers: String {
-    case goToMap
 }

@@ -9,18 +9,6 @@ import Foundation
 import Alamofire
 import RxSwift
 
-// -MR- Comment: jinam
-public struct ApiUrls {
-    public static let nasaLandedMeteorites = "https://data.nasa.gov/resource/gh4g-9sfh.json"
-}
-
-public struct Constants {
-    public static let appToken = "X-App-Token"
-    // -MR- Comment: token do Keychain
-    public static let appTokenValue = "ODqdLYKjJDAPpFUCiLnMrhyFy"
-    public static let parsingError = "Error: when parsing response data"
-}
-
 final class MeteoriteRequester {
     func getMeteorites(sinceYear: Int = 2011) -> Single<[Meteorite]> {
         let year = sinceYear - 1
@@ -28,7 +16,7 @@ final class MeteoriteRequester {
 
         return Single<[Meteorite]>.create(subscribe: { single -> Disposable in
         AF.request(
-            ApiUrls.nasaLandedMeteorites,
+            Constants.ApiUrls.nasaLandedMeteorites,
             parameters: yearFilterParameter,
             encoder: URLEncodedFormParameterEncoder(destination: .queryString),
             headers: [Constants.appTokenValue: Constants.appToken]
@@ -70,7 +58,7 @@ enum MeteoriteRequesterError: LocalizedError {
     var errorDescription: String? {
         switch self {
         case .parsingError:
-            return Constants.parsingError
+            return Constants.Errors.parsingError
         }
     }
 }
