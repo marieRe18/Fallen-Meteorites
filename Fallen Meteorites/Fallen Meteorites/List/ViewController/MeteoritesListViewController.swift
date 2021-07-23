@@ -10,6 +10,7 @@ import UIKit
 class MeteoritesListViewController: UITableViewController {
 
     private var viewModel: MeteoritesListViewModel
+    private var selectedMeteorite: Meteorite?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,4 +29,27 @@ class MeteoritesListViewController: UITableViewController {
         let cell = UITableViewCell(style: .default, reuseIdentifier: "MeteoritesListIemCell")
         return viewModel.setUpCell(cell: cell, for: indexPath.row)
     }
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard
+            let identifier = segue.identifier,
+            let meteorite = selectedMeteorite
+        else { return }
+
+        if
+            identifier == segueIdentifiers.goToMap.rawValue,
+            let mapViewController = segue.destination as? MapViewController
+        {
+            mapViewController.meteorite = meteorite
+        }
+    }
+
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        selectedMeteorite = viewModel.meteorites[safe: indexPath.row]
+        performSegue(withIdentifier: "goToMap", sender: self)
+    }
+}
+
+enum segueIdentifiers: String {
+    case goToMap
 }
