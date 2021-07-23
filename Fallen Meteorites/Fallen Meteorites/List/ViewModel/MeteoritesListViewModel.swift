@@ -9,9 +9,16 @@ import UIKit
 import CoreLocation
 import RxSwift
 
+protocol MeteoritesListViewModelDelegate: AnyObject {
+    func refreshData()
+}
+
 final class MeteoritesListViewModel {
     // -MR- Comment: Remove prototype data
 //    private var meteorites = [Meteorite]()
+
+    weak var delegate: MeteoritesListViewModelDelegate?
+
     private var meteoriteRequester: MeteoriteRequester
     private var disposeBag = DisposeBag()
 
@@ -20,17 +27,21 @@ final class MeteoritesListViewModel {
     init() {
         meteoriteRequester = MeteoriteRequester()
         setUpMeteorites()
-        let meteor1 = Meteorite(name: "Dormamu", size: .big, location: CLLocationCoordinate2D(latitude: 16.60, longitude: 49.195))
-        let meteor2 = Meteorite(name: "Merdok", size: .small, location: CLLocationCoordinate2D(latitude: 16.60, longitude: 49.195))
-        let meteor3 = Meteorite(name: "Gingle", size: .medium, location: CLLocationCoordinate2D(latitude: 21.282778, longitude: -157.829444))
-        self.meteorites = [meteor1, meteor2, meteor3]
+        // -MR- Comment: remove
+//        let meteor1 = Meteorite(name: "Dormamu", size: .big, location: CLLocationCoordinate2D(latitude: 16.60, longitude: 49.195))
+//        let meteor2 = Meteorite(name: "Merdok", size: .small, location: CLLocationCoordinate2D(latitude: 16.60, longitude: 49.195))
+//        let meteor3 = Meteorite(name: "Gingle", size: .medium, location: CLLocationCoordinate2D(latitude: 21.282778, longitude: -157.829444))
+//        self.meteorites = [meteor1, meteor2, meteor3]
     }
 
     private func setUpMeteorites() {
         meteoriteRequester.getMeteorites()
             .subscribe(
                 onSuccess: { [weak self] meteorites in
-                    self?.meteorites = meteorites
+                    guard let self = self else { return }
+
+                    self.process(meteorites: meteorites)
+                    self.delegate?.refreshData()
                 },
                 onFailure: { error in
                     debugPrint(error.localizedDescription)
@@ -38,11 +49,20 @@ final class MeteoritesListViewModel {
             ).disposed(by: disposeBag)
     }
 
+    private func process(meteorites: [Meteorite]) {
+
+        self.meteorites = meteorites
+            .sorted {$0.size.value > $1.size.value}
+        self.meteorites.forEach { meteorite in
+            print(meteorite.size.value)
+        }
+    }
+
     func setUpCell(cell: UITableViewCell, for index: Int) -> UITableViewCell {
         if let item = meteorites[safe: index] {
             cell.textLabel?.text = item.name
             cell.imageView?.image = UIImage(named: "seal.fill")
-            cell.imageView?.tintColor = item.size.color
+            cell.imageView?.tintColor = item.size.level.color
         }
         return cell
     }

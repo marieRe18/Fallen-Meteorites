@@ -17,8 +17,9 @@ class MeteoritesListViewController: UITableViewController {
     }
 
     required init?(coder: NSCoder) {
-        self.viewModel = MeteoritesListViewModel()
+        viewModel = MeteoritesListViewModel()
         super.init(coder: coder)
+        viewModel.delegate = self
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -47,6 +48,12 @@ class MeteoritesListViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         selectedMeteorite = viewModel.meteorites[safe: indexPath.row]
         performSegue(withIdentifier: "goToMap", sender: self)
+    }
+}
+
+extension MeteoritesListViewController: MeteoritesListViewModelDelegate {
+    func refreshData() {
+        tableView.reloadData()
     }
 }
 

@@ -8,7 +8,7 @@
 import CoreLocation
 import UIKit
 
-enum Size: Int {
+enum Level: Int {
     case unknown
     case small
     case medium
@@ -30,10 +30,20 @@ enum Size: Int {
     }
 }
 
-extension Size {
-    static func resolve(from size: Int) -> Size {
-        let sizeLevel = size/20
-        return Size(rawValue: sizeLevel) ?? Size.unknown
+extension Level {
+    static func resolve(from size: Int) -> Level {
+        let level = size / 1000
+        return Level(rawValue: level) ?? Level.big
+    }
+}
+
+struct Size {
+    let value: Int
+    let level: Level
+
+    init(value: Int) {
+        self.value = value
+        self.level = Level.resolve(from: value)
     }
 }
 
@@ -62,7 +72,7 @@ extension Meteorite: Decodable {
         let massString = try container.decodeIfPresent(String.self, forKey: .mass) ?? "0"
         let mass = Int(massString) ?? 0
 
-        size = Size.resolve(from: mass)
+        size = Size(value: mass)
 
         let locationContainer = try container.nestedContainer(keyedBy: LocationContainer.self, forKey: .geolocation)
 
