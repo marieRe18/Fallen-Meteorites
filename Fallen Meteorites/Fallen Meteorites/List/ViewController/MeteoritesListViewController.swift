@@ -13,6 +13,12 @@ class MeteoritesListViewController: UITableViewController {
     private var viewModel: MeteoritesListViewModel
     private var selectedMeteorite: Meteorite?
 
+    private lazy var context: NSManagedObjectContext? = {
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return nil }
+
+        return appDelegate.persistentContainer.viewContext
+    }()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         loadDataIfNeeded()
@@ -26,8 +32,8 @@ class MeteoritesListViewController: UITableViewController {
 
     private func loadDataIfNeeded() {
         // -MR- Comment: podminky
-//        viewModel.loadMeteorites()
-        viewModel.setUpMeteorites()
+        viewModel.loadMeteorites()
+//        viewModel.setUpMeteorites()
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -57,21 +63,29 @@ class MeteoritesListViewController: UITableViewController {
         selectedMeteorite = viewModel.meteorites[safe: indexPath.row]
         performSegue(withIdentifier: "goToMap", sender: self)
     }
+
+    private func emptyDb() {
+        let fetchRequest: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: MeteoriteDbKeys.meteoriteDb.rawValue)
+        let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+
+        do {
+            try context?.execute(deleteRequest)
+        } catch let error as NSError {
+            // -MR- Comment: handle?
+            debugPrint("Could not delete objects in database. \(error), \(error.userInfo)")
+        }
+    }
 }
 
 extension MeteoritesListViewController: MeteoritesListViewModelDelegate {
     func setUpData(completition: (([Meteorite]) -> Void)) {
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: MeteoriteDbKeys.meteoriteDb.rawValue)
 
-        let context = appDelegate.persistentContainer.viewContext
-        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "MeteoriteDb")
-
-//        var meteoritesDb: [NSManagedObject]
         var meteoritesDb = [MeteoriteDb]()
         var meteorites: [Meteorite]
 
         do {
-            meteoritesDb = try context.fetch(fetchRequest) as? [MeteoriteDb] ?? []
+            meteoritesDb = try context?.fetch(fetchRequest) as? [MeteoriteDb] ?? []
             meteorites = meteoritesDb.compactMap {
                 let sizeValue = $0.value(forKey: MeteoriteDbKeys.size.rawValue) as? Int ?? 0
                 let latitude = $0.value(forKey: MeteoriteDbKeys.latitude.rawValue) as? Double ?? 0.0
@@ -96,14 +110,12 @@ extension MeteoritesListViewController: MeteoritesListViewModelDelegate {
     }
     
     func saveData(_ meteorites: [Meteorite]) {
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+        guard let safeContext = context else { return }
 
-        let context = appDelegate.persistentContainer.viewContext
-
+        emptyDb()
         meteorites.enumerated().forEach { index, meteorite in
-
             // -MR- Comment: mazani db
-            let meteoriteEntity = MeteoriteDb(context: context)
+            let meteoriteEntity = MeteoriteDb(context: safeContext)
             meteoriteEntity.id = index.description
             meteoriteEntity.name = meteorite.name
             meteoriteEntity.size = Double(meteorite.size.value)
@@ -111,7 +123,7 @@ extension MeteoritesListViewController: MeteoritesListViewModelDelegate {
             meteoriteEntity.longitude = meteorite.location.longitude
 
             do {
-                try context.save()
+                try context?.save()
             } catch let error as NSError {
                 debugPrint("Could not save meteorites into database: \(error), \(error.userInfo)")
             }

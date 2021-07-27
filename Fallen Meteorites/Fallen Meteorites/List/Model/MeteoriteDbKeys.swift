@@ -6,7 +6,7 @@
 //
 
 enum MeteoriteDbKeys: String {
-    case meteorite
+    case meteoriteDb = "MeteoriteDb"
     case id
     case name
     case size
