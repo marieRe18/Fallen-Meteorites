@@ -10,17 +10,17 @@ import Foundation
 public final class UserSettingsService {
 
     private enum Keys: String {
-        case lastLaunch
+        case lastReloadOfData
     }
 
-    let userDefaults: UserDefaults
+    private let userDefaults: UserDefaults
 
-    var lastLaunch: Date? {
+    var lastReloadOfData: Date? {
         get {
-            userDefaults.value(forKey: Keys.lastLaunch.rawValue) as? Date
+            userDefaults.value(forKey: Keys.lastReloadOfData.rawValue) as? Date
         }
         set {
-            userDefaults.setValue(newValue, forKey: Keys.lastLaunch.rawValue)
+            userDefaults.setValue(newValue, forKey: Keys.lastReloadOfData.rawValue)
         }
     }
 

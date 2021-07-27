@@ -10,6 +10,8 @@ import CoreData
 
 class MeteoritesListViewController: UITableViewController {
 
+    private let userSettingsProvider: UserSettingsProvider
+
     private var viewModel: MeteoritesListViewModel
     private var selectedMeteorite: Meteorite?
 
@@ -26,14 +28,15 @@ class MeteoritesListViewController: UITableViewController {
 
     required init?(coder: NSCoder) {
         viewModel = MeteoritesListViewModel()
+        userSettingsProvider = UserSettingsProvider.shared
+
         super.init(coder: coder)
+
         viewModel.delegate = self
     }
 
     private func loadDataIfNeeded() {
-        // -MR- Comment: podminky
-        viewModel.loadMeteorites()
-//        viewModel.setUpMeteorites()
+        userSettingsProvider.needsToReloadData ? viewModel.loadMeteorites() : viewModel.setUpMeteorites()
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -78,9 +81,13 @@ class MeteoritesListViewController: UITableViewController {
 }
 
 extension MeteoritesListViewController: MeteoritesListViewModelDelegate {
+    func dataDidReload() {
+        userSettingsProvider.dataDidReload()
+    }
+
     func setUpData(completition: (([Meteorite]) -> Void)) {
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: MeteoriteDbKeys.meteoriteDb.rawValue)
-
+print("set up")
         var meteoritesDb = [MeteoriteDb]()
         var meteorites: [Meteorite]
 
@@ -109,9 +116,10 @@ extension MeteoritesListViewController: MeteoritesListViewModelDelegate {
         }
     }
     
-    func saveData(_ meteorites: [Meteorite]) {
+    func saveData(_ meteorites: [Meteorite], completition: (() -> Void)) {
         guard let safeContext = context else { return }
 
+print("save")
         emptyDb()
         meteorites.enumerated().forEach { index, meteorite in
             // -MR- Comment: mazani db
@@ -127,6 +135,7 @@ extension MeteoritesListViewController: MeteoritesListViewModelDelegate {
             } catch let error as NSError {
                 debugPrint("Could not save meteorites into database: \(error), \(error.userInfo)")
             }
+            completition()
         }
     }
 
