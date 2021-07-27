@@ -28,56 +28,58 @@ public final class DatabaseService {
         }
     }
     
-    func saveMeteorites(_ meteorites: [Meteorite], completition: (() -> Void)) {
+    func saveMeteorites(_ meteorites: [Meteorite], completition: @escaping (() -> Void)) {
         guard let safeContext = context else { return }
 
-        emptyDb()
-        meteorites.enumerated().forEach { index, meteorite in
-            // -MR- Comment: mazani db
-            let meteoriteEntity = MeteoriteDb(context: safeContext)
-            meteoriteEntity.id = index.description
-            meteoriteEntity.name = meteorite.name
-            meteoriteEntity.size = Double(meteorite.size.value)
-            meteoriteEntity.latitude = meteorite.location.latitude
-            meteoriteEntity.longitude = meteorite.location.longitude
+        DispatchQueue.main.async { [weak self] in
+            self?.emptyDb()
+            meteorites.enumerated().forEach { index, meteorite in
+                // -MR- Comment: mazani db
+                let meteoriteEntity = MeteoriteDb(context: safeContext)
+                meteoriteEntity.id = index.description
+                meteoriteEntity.name = meteorite.name
+                meteoriteEntity.size = Double(meteorite.size.value)
+                meteoriteEntity.latitude = meteorite.location.latitude
+                meteoriteEntity.longitude = meteorite.location.longitude
 
-            do {
-                try context?.save()
-            } catch let error as NSError {
-                debugPrint("Could not save meteorites into database: \(error), \(error.userInfo)")
+                do {
+                    try self?.context?.save()
+                } catch let error as NSError {
+                    debugPrint("Could not save meteorites into database: \(error), \(error.userInfo)")
+                }
             }
             completition()
         }
     }
 
-    func loadMeteorites(completition: (([Meteorite]) -> Void)) {
+    func loadMeteorites(completition: @escaping (([Meteorite]) -> Void)) {
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: MeteoriteDbKeys.meteoriteDb.rawValue)
 
         var meteoritesDb = [MeteoriteDb]()
         var meteorites = [Meteorite]()
 
-        do {
-            meteoritesDb = try context?.fetch(fetchRequest) as? [MeteoriteDb] ?? []
-            meteorites = meteoritesDb.compactMap {
-                let sizeValue = $0.value(forKey: MeteoriteDbKeys.size.rawValue) as? Int ?? 0
-                let latitude = $0.value(forKey: MeteoriteDbKeys.latitude.rawValue) as? Double ?? 0.0
-                let longitude = $0.value(forKey: MeteoriteDbKeys.longitude.rawValue) as? Double ?? 0.0
+        DispatchQueue.main.async { [weak self] in
+            do {
+                meteoritesDb = try self?.context?.fetch(fetchRequest) as? [MeteoriteDb] ?? []
+                meteorites = meteoritesDb.compactMap {
+                    let sizeValue = $0.value(forKey: MeteoriteDbKeys.size.rawValue) as? Int ?? 0
+                    let latitude = $0.value(forKey: MeteoriteDbKeys.latitude.rawValue) as? Double ?? 0.0
+                    let longitude = $0.value(forKey: MeteoriteDbKeys.longitude.rawValue) as? Double ?? 0.0
 
-                let name = $0.value(forKey: MeteoriteDbKeys.name.rawValue) as? String ?? ""
-                let size = Size(value: sizeValue)
-                let location = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+                    let name = $0.value(forKey: MeteoriteDbKeys.name.rawValue) as? String ?? ""
+                    let size = Size(value: sizeValue)
+                    let location = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
 
+                    return Meteorite(
+                        name: name,
+                        size: size,
+                        location: location)
+                }
 
-                return Meteorite(
-                    name: name,
-                    size: size,
-                    location: location)
+            } catch let error as NSError {
+                debugPrint("Could not fetch. \(error), \(error.userInfo)")
             }
-
-        } catch let error as NSError {
-            debugPrint("Could not fetch. \(error), \(error.userInfo)")
+            completition(meteorites)
         }
-
-        completition(meteorites)
     }
 }

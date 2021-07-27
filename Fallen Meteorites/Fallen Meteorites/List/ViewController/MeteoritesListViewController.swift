@@ -68,11 +68,11 @@ extension MeteoritesListViewController: MeteoritesListViewModelDelegate {
         userSettingsProvider.dataDidReload()
     }
 
-    func setUpData(completition: (([Meteorite]) -> Void)) {
+    func setUpData(completition: @escaping (([Meteorite]) -> Void)) {
         databaseService.loadMeteorites(completition: completition)
     }
     
-    func saveData(_ meteorites: [Meteorite], completition: (() -> Void)) {
+    func saveData(_ meteorites: [Meteorite], completition: @escaping (() -> Void)) {
         databaseService.saveMeteorites(meteorites, completition: completition)
     }
 

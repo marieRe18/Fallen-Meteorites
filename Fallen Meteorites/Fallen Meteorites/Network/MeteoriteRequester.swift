@@ -14,6 +14,7 @@ final class MeteoriteRequester {
         let year = sinceYear - 1
         let yearFilterParameter = ["$where": "year>'\(year)-12-31T23:59:59.999'"]
 
+// NOTE: -MR- Requested on main thread because it brings essential data
         return Single<[Meteorite]>.create(subscribe: { single -> Disposable in
         AF.request(
             Constants.ApiUrls.nasaLandedMeteorites,
@@ -21,7 +22,7 @@ final class MeteoriteRequester {
             encoder: URLEncodedFormParameterEncoder(destination: .queryString),
             headers: [Constants.appTokenValue: Constants.appToken]
         )
-        .validate().responseJSON(queue: .global(qos: .background)) { response in
+        .validate().responseJSON(queue: .main) { response in
 // -MR- Comment: generalizace
             switch response.result {
             case .success:

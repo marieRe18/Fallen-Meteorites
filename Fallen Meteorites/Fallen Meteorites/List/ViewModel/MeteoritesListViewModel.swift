@@ -12,8 +12,8 @@ import RxSwift
 protocol MeteoritesListViewModelDelegate: AnyObject {
     func refreshData()
     func dataDidReload()
-    func saveData(_ meteorites: [Meteorite], completition: (() -> Void))
-    func setUpData(completition: (([Meteorite]) -> Void))
+    func saveData(_ meteorites: [Meteorite], completition: @escaping (() -> Void))
+    func setUpData(completition: @escaping (([Meteorite]) -> Void))
 }
 
 final class MeteoritesListViewModel {
@@ -61,7 +61,9 @@ final class MeteoritesListViewModel {
     }
 
     func setUpMeteorites() {
-        delegate?.setUpData { process(meteorites: $0) }
+        delegate?.setUpData { [weak self] in
+            self?.process(meteorites: $0)
+        }
     }
 
     func setUpCell(cell: UITableViewCell, for index: Int) -> UITableViewCell {
