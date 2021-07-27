@@ -14,6 +14,7 @@ protocol MeteoritesListViewModelDelegate: AnyObject {
     func dataDidReload()
     func saveData(_ meteorites: [Meteorite], completition: @escaping (() -> Void))
     func setUpData(completition: @escaping (([Meteorite]) -> Void))
+    func errorOccured(_ error: Error)
 }
 
 final class MeteoritesListViewModel {
@@ -54,9 +55,8 @@ final class MeteoritesListViewModel {
                         self?.delegate?.dataDidReload()
                     }
                 },
-                onFailure: { error in
-                    // -MR- Comment: dodelat implementaci erroru
-                    debugPrint(error.localizedDescription)
+                onFailure: { [weak self] error in
+                    self?.delegate?.errorOccured(error)
                 }
             ).disposed(by: disposeBag)
     }

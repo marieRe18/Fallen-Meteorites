@@ -64,6 +64,14 @@ class MeteoritesListViewController: UITableViewController {
 }
 
 extension MeteoritesListViewController: MeteoritesListViewModelDelegate {
+    func errorOccured(_ error: Error) {
+        guard let localizedError = error as? LocalizedError else {
+            presentAlert(title: error.localizedDescription)
+            return
+        }
+        presentAlert(title: localizedError.errorDescription ?? "")
+    }
+
     func dataDidReload() {
         userSettingsProvider.dataDidReload()
     }
