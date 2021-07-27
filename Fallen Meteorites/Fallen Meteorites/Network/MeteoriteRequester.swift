@@ -10,12 +10,19 @@ import Alamofire
 import RxSwift
 
 final class MeteoriteRequester {
+
+    private let networkService = NetworkService.shared
+
     func getMeteorites(sinceYear: Int = 2011) -> Single<[Meteorite]> {
         let year = sinceYear - 1
         let yearFilterParameter = ["$where": "year>'\(year)-12-31T23:59:59.999'"]
 
 // NOTE: -MR- Requested on main thread because it brings essential data
-        return Single<[Meteorite]>.create(subscribe: { single -> Disposable in
+        return Single<[Meteorite]>.create(subscribe: { [weak self] single -> Disposable in
+            guard self?.networkService.isConnected ?? false else {
+                single(.failure(MeteoriteRequesterError.noInternetConnection))
+                return Disposables.create()
+            }
         AF.request(
             Constants.ApiUrls.nasaLandedMeteorites,
             parameters: yearFilterParameter,
@@ -55,11 +62,14 @@ final class MeteoriteRequester {
 
 enum MeteoriteRequesterError: LocalizedError {
     case parsingError
+    case noInternetConnection
 
     var errorDescription: String? {
         switch self {
         case .parsingError:
             return Constants.Errors.parsingError
+        case .noInternetConnection:
+            return Constants.Errors.noInternetConnectionError
         }
     }
 }

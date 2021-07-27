@@ -18,6 +18,7 @@ public struct Constants {
     }
 
     public struct Errors {
-        public static let parsingError = "Error: when parsing response data"
+        public static let parsingError = "Error when parsing response data."
+        public static let noInternetConnectionError = "No internet connection."
     }
 }

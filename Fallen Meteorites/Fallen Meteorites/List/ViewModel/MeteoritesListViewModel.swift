@@ -55,6 +55,7 @@ final class MeteoritesListViewModel {
                     }
                 },
                 onFailure: { error in
+                    // -MR- Comment: dodelat implementaci erroru
                     debugPrint(error.localizedDescription)
                 }
             ).disposed(by: disposeBag)
