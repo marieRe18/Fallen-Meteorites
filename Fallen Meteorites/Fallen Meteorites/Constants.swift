@@ -7,7 +7,6 @@
 
 public struct Constants {
     public static let appToken = "X-App-Token"
-    // -MR- Comment: token do Keychain
     public static let appTokenValue = "ODqdLYKjJDAPpFUCiLnMrhyFy"
 
     public struct ApiUrls {

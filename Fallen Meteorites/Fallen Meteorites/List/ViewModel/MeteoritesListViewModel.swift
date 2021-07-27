@@ -11,6 +11,7 @@ import RxSwift
 
 protocol MeteoritesListViewModelDelegate: AnyObject {
     func refreshData()
+    func saveData(_ meteorites: [Meteorite], completition: (() -> Void))
 }
 
 final class MeteoritesListViewModel {
@@ -26,17 +27,29 @@ final class MeteoritesListViewModel {
 
     init() {
         meteoriteRequester = MeteoriteRequester()
-        setUpMeteorites()
     }
 
-    private func setUpMeteorites() {
+    private func process(meteorites: [Meteorite]) {
+
+        self.meteorites = meteorites
+            .sorted { $0.size.value > $1.size.value }
+
+        self.delegate?.saveData(self.meteorites) {
+            self.delegate?.refreshData()
+        }
+        
+// -MR- Comment: delete
+        self.meteorites.forEach { meteorite in
+            print(meteorite.size.value)
+        }
+    }
+
+    func loadMeteorites() {
         meteoriteRequester.getMeteorites()
             .subscribe(
                 onSuccess: { [weak self] meteorites in
                     guard let self = self else { return }
-
                     self.process(meteorites: meteorites)
-                    self.delegate?.refreshData()
                 },
                 onFailure: { error in
                     debugPrint(error.localizedDescription)
@@ -44,13 +57,8 @@ final class MeteoritesListViewModel {
             ).disposed(by: disposeBag)
     }
 
-    private func process(meteorites: [Meteorite]) {
-
-        self.meteorites = meteorites
-            .sorted {$0.size.value > $1.size.value}
-        self.meteorites.forEach { meteorite in
-            print(meteorite.size.value)
-        }
+    func setUpMeteorites() {
+        // -MR- Comment: dodelat
     }
 
     func setUpCell(cell: UITableViewCell, for index: Int) -> UITableViewCell {

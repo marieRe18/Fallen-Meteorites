@@ -6,6 +6,7 @@
 //
 
 import CoreLocation
+import CoreData
 
 struct Meteorite {
     let name: String

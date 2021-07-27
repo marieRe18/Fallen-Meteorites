@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CoreData
 
 class MeteoritesListViewController: UITableViewController {
 
@@ -20,6 +21,12 @@ class MeteoritesListViewController: UITableViewController {
         viewModel = MeteoritesListViewModel()
         super.init(coder: coder)
         viewModel.delegate = self
+        loadDataIfNeeded()
+    }
+
+    private func loadDataIfNeeded() {
+        // -MR- Comment: podminky
+        viewModel.loadMeteorites()
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -52,6 +59,36 @@ class MeteoritesListViewController: UITableViewController {
 }
 
 extension MeteoritesListViewController: MeteoritesListViewModelDelegate {
+    func saveData(_ meteorites: [Meteorite], completition: (() -> Void)) {
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+
+        let context = appDelegate.persistentContainer.viewContext
+
+        meteorites.forEach { meteorite in
+            guard
+                let entity = NSEntityDescription.entity(forEntityName: "Meteorite", in: context)
+            else { return }
+
+            let latitude = Double(meteorite.location.latitude.description)
+            let longitude = Double(meteorite.location.longitude.description)
+
+            let meteoriteEntity = NSManagedObject(entity: entity, insertInto: context)
+
+            meteoriteEntity.setValue(meteorite.name, forKey: MeteoriteDbKeys.name.rawValue)
+            meteoriteEntity.setValue(meteorite.size.value, forKey: MeteoriteDbKeys.size.rawValue)
+            meteoriteEntity.setValue(latitude, forKey: MeteoriteDbKeys.lat.rawValue)
+            meteoriteEntity.setValue(longitude, forKey: MeteoriteDbKeys.long.rawValue)
+        }
+
+        do {
+            try context.save()
+        } catch let error as NSError {
+            debugPrint("Could not save meteorites into database: \(error), \(error.userInfo)")
+        }
+
+        completition()
+    }
+
     func refreshData() {
         tableView.reloadData()
     }
