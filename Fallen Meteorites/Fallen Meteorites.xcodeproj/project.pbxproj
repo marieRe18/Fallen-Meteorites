@@ -26,6 +26,7 @@
 		2FD64E6F26AFFA6C00F95B91 /* MeteoriteDbKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD64E6E26AFFA6C00F95B91 /* MeteoriteDbKeys.swift */; };
 		2FD64E7126B026D500F95B91 /* UserSettingsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD64E7026B026D500F95B91 /* UserSettingsService.swift */; };
 		2FD64E7426B0290200F95B91 /* UserSettingsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD64E7326B0290200F95B91 /* UserSettingsProvider.swift */; };
+		2FD64E7626B034F300F95B91 /* DatabaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD64E7526B034F300F95B91 /* DatabaseService.swift */; };
 		F0933525F23CAA979FFE447D /* Pods_Fallen_Meteorites.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E841415454AA586D496734AC /* Pods_Fallen_Meteorites.framework */; };
 /* End PBXBuildFile section */
 
@@ -51,6 +52,7 @@
 		2FD64E6E26AFFA6C00F95B91 /* MeteoriteDbKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeteoriteDbKeys.swift; sourceTree = "<group>"; };
 		2FD64E7026B026D500F95B91 /* UserSettingsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettingsService.swift; sourceTree = "<group>"; };
 		2FD64E7326B0290200F95B91 /* UserSettingsProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettingsProvider.swift; sourceTree = "<group>"; };
+		2FD64E7526B034F300F95B91 /* DatabaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseService.swift; sourceTree = "<group>"; };
 		4920C913B07C35BEBF30D451 /* Pods-Fallen Meteorites.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fallen Meteorites.debug.xcconfig"; path = "Target Support Files/Pods-Fallen Meteorites/Pods-Fallen Meteorites.debug.xcconfig"; sourceTree = "<group>"; };
 		B0F1B9EB3B8E5DFFAB118F65 /* Pods-Fallen Meteorites.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fallen Meteorites.release.xcconfig"; path = "Target Support Files/Pods-Fallen Meteorites/Pods-Fallen Meteorites.release.xcconfig"; sourceTree = "<group>"; };
 		E841415454AA586D496734AC /* Pods_Fallen_Meteorites.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Fallen_Meteorites.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -102,6 +104,7 @@
 				2F80EC5D26AB0334000DCF79 /* Constants.swift */,
 				2F80EC4226A972B9000DCF79 /* List */,
 				2F80EC4F26AA963E000DCF79 /* Map */,
+				2FD64E7726B034F700F95B91 /* Database */,
 				2F80EC6126AB0858000DCF79 /* Network */,
 				2FD64E7226B026D900F95B91 /* Services */,
 				2F80EC5A26AAAA25000DCF79 /* Extensions */,
@@ -208,6 +211,14 @@
 				2FD64E7326B0290200F95B91 /* UserSettingsProvider.swift */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		2FD64E7726B034F700F95B91 /* Database */ = {
+			isa = PBXGroup;
+			children = (
+				2FD64E7526B034F300F95B91 /* DatabaseService.swift */,
+			);
+			path = Database;
 			sourceTree = "<group>";
 		};
 		3AE46486C328CB8EB36B9A23 /* Frameworks */ = {
@@ -332,6 +343,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2FD64E7626B034F300F95B91 /* DatabaseService.swift in Sources */,
 				2FD64E7426B0290200F95B91 /* UserSettingsProvider.swift in Sources */,
 				2FD64E6F26AFFA6C00F95B91 /* MeteoriteDbKeys.swift in Sources */,
 				2F80EC3326A7FCEF000DCF79 /* Fallen_Meteorites.xcdatamodeld in Sources */,
