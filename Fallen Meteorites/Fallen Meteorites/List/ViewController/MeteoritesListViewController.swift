@@ -15,18 +15,19 @@ class MeteoritesListViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        loadDataIfNeeded()
     }
 
     required init?(coder: NSCoder) {
         viewModel = MeteoritesListViewModel()
         super.init(coder: coder)
         viewModel.delegate = self
-        loadDataIfNeeded()
     }
 
     private func loadDataIfNeeded() {
         // -MR- Comment: podminky
-        viewModel.loadMeteorites()
+//        viewModel.loadMeteorites()
+        viewModel.setUpMeteorites()
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -59,34 +60,62 @@ class MeteoritesListViewController: UITableViewController {
 }
 
 extension MeteoritesListViewController: MeteoritesListViewModelDelegate {
-    func saveData(_ meteorites: [Meteorite], completition: (() -> Void)) {
+    func setUpData(completition: (([Meteorite]) -> Void)) {
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+
+        let context = appDelegate.persistentContainer.viewContext
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "MeteoriteDb")
+
+//        var meteoritesDb: [NSManagedObject]
+        var meteoritesDb = [MeteoriteDb]()
+        var meteorites: [Meteorite]
+
+        do {
+            meteoritesDb = try context.fetch(fetchRequest) as? [MeteoriteDb] ?? []
+            meteorites = meteoritesDb.compactMap {
+                let sizeValue = $0.value(forKey: MeteoriteDbKeys.size.rawValue) as? Int ?? 0
+                let latitude = $0.value(forKey: MeteoriteDbKeys.latitude.rawValue) as? Double ?? 0.0
+                let longitude = $0.value(forKey: MeteoriteDbKeys.longitude.rawValue) as? Double ?? 0.0
+                
+                let name = $0.value(forKey: MeteoriteDbKeys.name.rawValue) as? String ?? ""
+                let size = Size(value: sizeValue)
+                let location = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+
+
+                return Meteorite(
+                    name: name,
+                    size: size,
+                    location: location)
+            }
+
+            completition(meteorites)
+
+        } catch let error as NSError {
+            debugPrint("Could not fetch. \(error), \(error.userInfo)")
+        }
+    }
+    
+    func saveData(_ meteorites: [Meteorite]) {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
 
         let context = appDelegate.persistentContainer.viewContext
 
-        meteorites.forEach { meteorite in
-            guard
-                let entity = NSEntityDescription.entity(forEntityName: "Meteorite", in: context)
-            else { return }
+        meteorites.enumerated().forEach { index, meteorite in
 
-            let latitude = Double(meteorite.location.latitude.description)
-            let longitude = Double(meteorite.location.longitude.description)
+            // -MR- Comment: mazani db
+            let meteoriteEntity = MeteoriteDb(context: context)
+            meteoriteEntity.id = index.description
+            meteoriteEntity.name = meteorite.name
+            meteoriteEntity.size = Double(meteorite.size.value)
+            meteoriteEntity.latitude = meteorite.location.latitude
+            meteoriteEntity.longitude = meteorite.location.longitude
 
-            let meteoriteEntity = NSManagedObject(entity: entity, insertInto: context)
-
-            meteoriteEntity.setValue(meteorite.name, forKey: MeteoriteDbKeys.name.rawValue)
-            meteoriteEntity.setValue(meteorite.size.value, forKey: MeteoriteDbKeys.size.rawValue)
-            meteoriteEntity.setValue(latitude, forKey: MeteoriteDbKeys.lat.rawValue)
-            meteoriteEntity.setValue(longitude, forKey: MeteoriteDbKeys.long.rawValue)
+            do {
+                try context.save()
+            } catch let error as NSError {
+                debugPrint("Could not save meteorites into database: \(error), \(error.userInfo)")
+            }
         }
-
-        do {
-            try context.save()
-        } catch let error as NSError {
-            debugPrint("Could not save meteorites into database: \(error), \(error.userInfo)")
-        }
-
-        completition()
     }
 
     func refreshData() {

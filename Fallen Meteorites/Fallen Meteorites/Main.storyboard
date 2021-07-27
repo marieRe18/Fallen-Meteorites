@@ -12,7 +12,7 @@
         <!--Fallen meteorites-->
         <scene sceneID="PKL-XC-Se8">
             <objects>
-                <tableViewController id="bk7-nv-5Ce" customClass="MeteoritesListViewController" customModule="Fallen_Meteorites" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="MeteoritesListViewController" id="bk7-nv-5Ce" customClass="MeteoritesListViewController" customModule="Fallen_Meteorites" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="KH5-86-0gk">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -68,7 +68,7 @@
         <!--Map View Controller-->
         <scene sceneID="Qnx-2c-Qla">
             <objects>
-                <viewController id="FP3-jd-NbN" customClass="MapViewController" customModule="Fallen_Meteorites" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MapViewController" id="FP3-jd-NbN" customClass="MapViewController" customModule="Fallen_Meteorites" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3TZ-4a-goN">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

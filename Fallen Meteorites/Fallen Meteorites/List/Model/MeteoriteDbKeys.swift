@@ -6,8 +6,10 @@
 //
 
 enum MeteoriteDbKeys: String {
+    case meteorite
+    case id
     case name
     case size
-    case lat
-    case long
+    case latitude
+    case longitude
 }
