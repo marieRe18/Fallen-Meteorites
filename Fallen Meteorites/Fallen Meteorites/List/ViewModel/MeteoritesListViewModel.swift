@@ -69,6 +69,9 @@ final class MeteoritesListViewModel {
         }
         return cell
     }
+
+
+    static var sizeFourImg = UIImage(named: "meteorite")?.imageMagnyfied(by: 0.2)
 }
 
 extension UIImage {
@@ -84,6 +87,6 @@ extension UIImage {
             draw(in: CGRect(origin: .zero, size: newSize))
         }
 
-        return image//withRenderingMode(.alwaysTemplate)
+        return image.withRenderingMode(.alwaysOriginal)
     }
 }
