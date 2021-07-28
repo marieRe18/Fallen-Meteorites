@@ -37,21 +37,6 @@ enum Level: Int {
             }
         }
     }
-    // -MR- Comment: delete?
-//    var color: UIColor {
-//        get {
-//            switch self {
-//            case .unknown:
-//                return Constants.Colors.standardGray
-//            case .small:
-//                return UIColor.yellow
-//            case .medium:
-//                return UIColor.orange
-//            case .big:
-//                return UIColor.red
-//            }
-//        }
-//    }
 }
 
 extension Level {
