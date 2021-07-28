@@ -16,7 +16,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.13724720479999999" green="0.1607225239" blue="0.19600412249999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="tintColor" red="0.13724720479999999" green="0.1607225239" blue="0.19600412249999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="separatorColor" red="0.47465276719999999" green="0.48222911359999998" blue="0.56845408679999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="sectionIndexBackgroundColor" red="0.47465276719999999" green="0.48222911359999998" blue="0.56845408679999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MeteoritesListIemCell" id="hNN-VB-Xp2">
                                 <rect key="frame" x="0.0" y="24.5" width="414" height="70.5"/>
@@ -39,7 +41,6 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
-                                    <color key="backgroundColor" red="0.083830900489999999" green="0.12071884419999999" blue="0.38405621049999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <constraints>
                                         <constraint firstAttribute="bottom" secondItem="SgJ-qP-w81" secondAttribute="bottom" constant="10" id="2U9-vO-kw5"/>
                                         <constraint firstItem="Rlq-7f-rGM" firstAttribute="top" secondItem="me2-we-DLf" secondAttribute="topMargin" constant="10" id="2cX-mu-hE2"/>
@@ -50,6 +51,7 @@
                                         <constraint firstItem="SgJ-qP-w81" firstAttribute="leading" secondItem="me2-we-DLf" secondAttribute="leading" constant="15" id="w9X-WF-Obp"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <color key="backgroundColor" red="0.47465276719999999" green="0.48222911359999998" blue="0.56845408679999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
                                     <segue destination="FP3-jd-NbN" kind="presentation" identifier="goToMap" id="X8F-Cy-ouJ"/>
                                 </connections>
@@ -79,7 +81,7 @@
                             </mapView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="bHe-Ob-ypt"/>
-                        <color key="backgroundColor" red="0.54591828580000001" green="0.2666829228" blue="0.4077201486" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.22743797299999999" green="0.24700993299999999" blue="0.27835077050000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="tintColor" red="0.14962541309999999" green="0.2195076658" blue="0.71330018839999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="9ar-DK-QKP" firstAttribute="leading" secondItem="bHe-Ob-ypt" secondAttribute="leading" id="EJm-P8-Ajm"/>

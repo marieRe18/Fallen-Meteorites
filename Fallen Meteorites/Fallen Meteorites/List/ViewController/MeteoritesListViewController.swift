@@ -17,8 +17,7 @@ class MeteoritesListViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        loadDataIfNeeded()
-    }
+        loadDataIfNeeded()    }
 
     required init?(coder: NSCoder) {
         viewModel = MeteoritesListViewModel()
@@ -43,6 +42,14 @@ class MeteoritesListViewController: UITableViewController {
             let mapViewController = segue.destination as? MapViewController
         {
             mapViewController.meteorite = meteorite
+        }
+    }
+
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if section == 0 {
+            return "\(viewModel.meteorites.count) \(Constants.since2011)"
+        } else {
+            return nil
         }
     }
 

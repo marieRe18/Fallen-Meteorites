@@ -10,6 +10,7 @@ import UIKit
 public struct Constants {
     public static let appToken = "X-App-Token"
     public static let appTokenValue = "ODqdLYKjJDAPpFUCiLnMrhyFy"
+    public static let since2011 = "since 2011"
 
     enum SegueIdentifiers: String {
         case goToMap
@@ -57,6 +58,7 @@ public struct Constants {
     struct Colors {
         public static let darkBlue = #colorLiteral(red: 0.227437973, green: 0.247009933, blue: 0.2783507705, alpha: 1)
         public static let standardWhite = #colorLiteral(red: 0.9332844615, green: 0.9333672523, blue: 0.9332153201, alpha: 1)
+        public static let standardGray = #colorLiteral(red: 0.4746527672, green: 0.4822291136, blue: 0.5684540868, alpha: 1)
 
     }
 }
