@@ -41,7 +41,7 @@ class MeteoritesListViewController: UITableViewController {
         else { return }
 
         if
-            identifier == Constants.segueIdentifiers.goToMap.rawValue,
+            identifier == Constants.SegueIdentifiers.goToMap.rawValue,
             let mapViewController = segue.destination as? MapViewController
         {
             mapViewController.meteorite = meteorite

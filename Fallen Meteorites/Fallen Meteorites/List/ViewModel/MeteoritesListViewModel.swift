@@ -69,11 +69,32 @@ final class MeteoritesListViewModel {
 
     func setUpCell(cell: UITableViewCell, for index: Int) -> UITableViewCell {
         if let item = meteorites[safe: index] {
+            let itemSizeLevel = CGFloat(item.size.level.multiplier)
+
             cell.textLabel?.text = item.name
-            cell.imageView?.image = UIImage(named: "seal.fill")
-            cell.imageView?.tintColor = item.size.level.color
+            cell.imageView?.image = UIImage(named: "seal.fill")?.imageMagnyfied(by: itemSizeLevel)
+            cell.imageView?.tintColor = Constants.Colors.standardGray
+            cell.backgroundColor = Constants.Colors.darkBlue
+            cell.textLabel?.textColor = Constants.Colors.standardWhite
         }
         return cell
+    }
+}
+
+extension UIImage {
+    func imageMagnyfied(by multiplier: CGFloat) -> UIImage {
+        let width = self.size.width * multiplier
+        let height = self.size.height * multiplier
+        let size = CGSize(width: width, height: height)
+
+        return imageWith(newSize: size)
+    }
+    func imageWith(newSize: CGSize) -> UIImage {
+        let image = UIGraphicsImageRenderer(size: newSize).image { _ in
+            draw(in: CGRect(origin: .zero, size: newSize))
+        }
+
+        return image.withRenderingMode(.alwaysTemplate)
     }
 }
 
