@@ -79,7 +79,7 @@
                             </mapView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="bHe-Ob-ypt"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="0.54591828580000001" green="0.2666829228" blue="0.4077201486" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="tintColor" red="0.14962541309999999" green="0.2195076658" blue="0.71330018839999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="9ar-DK-QKP" firstAttribute="leading" secondItem="bHe-Ob-ypt" secondAttribute="leading" id="EJm-P8-Ajm"/>
@@ -104,7 +104,7 @@
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" red="0.064234964549999995" green="0.01829280145" blue="0.3017384112" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <color key="barTintColor" red="0.064234964549999995" green="0.01829280145" blue="0.3017384112" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="barTintColor" red="0.33395105600000002" green="0.22325971720000001" blue="0.39588260650000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <textAttributes key="titleTextAttributes">
                             <color key="textColor" red="0.9332844615" green="0.93336725229999995" blue="0.93321532009999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </textAttributes>

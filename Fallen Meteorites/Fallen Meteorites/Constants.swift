@@ -25,10 +25,38 @@ public struct Constants {
     }
 
     public struct Colors {
-        public static let darkBlue = #colorLiteral(red: 0.06423496455, green: 0.01829280145, blue: 0.3017384112, alpha: 1)
-        public static let standardBlue = #colorLiteral(red: 0.08383090049, green: 0.1207188442, blue: 0.3840562105, alpha: 1)
+        public static let darkBlue = #colorLiteral(red: 0.5459182858, green: 0.2666829228, blue: 0.4077201486, alpha: 1)
+        public static let standardBlue = #colorLiteral(red: 0.333951056, green: 0.2232597172, blue: 0.3958826065, alpha: 1)
         public static let standardWhite = #colorLiteral(red: 0.9332844615, green: 0.9333672523, blue: 0.9332153201, alpha: 1)
-        public static let standardGray = #colorLiteral(red: 0.4746527672, green: 0.4822291136, blue: 0.5684540868, alpha: 1)
+        public static let standardGray = #colorLiteral(red: 1, green: 0.3968307376, blue: 0.3963495791, alpha: 1)
+
+    }
+
+    enum MeteoriteImage: Int {
+        case sizeOne
+        case sizeTwo
+        case sizeThree
+        case sizeFour
+
+        private static let sizeOneImg = UIImage(named: "meteorite")?.imageMagnyfied(by: 1)
+        private static let sizeTwoImg = UIImage(named: "meteorite")?.imageMagnyfied(by: 1.2)
+        private static let sizeThreeImg = UIImage(named: "meteorite")?.imageMagnyfied(by: 1.4)
+        private static let sizeFourImg = UIImage(named: "meteorite")?.imageMagnyfied(by: 1.6)
+
+        var img: UIImage? {
+            get {
+                switch self {
+                case .sizeOne:
+                    return MeteoriteImage.sizeOneImg
+                case .sizeTwo:
+                    return MeteoriteImage.sizeTwoImg
+                case .sizeThree:
+                    return MeteoriteImage.sizeThreeImg
+                case .sizeFour:
+                    return MeteoriteImage.sizeFourImg
+                }
+            }
+        }
 
     }
 }
