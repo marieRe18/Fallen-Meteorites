@@ -172,7 +172,6 @@
 			children = (
 				2F80EC4D26AA9625000DCF79 /* ViewController */,
 				2F80EC5426AA9D46000DCF79 /* ViewModel */,
-				2F80EC5226AA9D29000DCF79 /* MapViewModel.swift */,
 				2F80EC5726AAA6AF000DCF79 /* Model */,
 			);
 			path = Map;
@@ -181,6 +180,7 @@
 		2F80EC5426AA9D46000DCF79 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				2F80EC5226AA9D29000DCF79 /* MapViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
