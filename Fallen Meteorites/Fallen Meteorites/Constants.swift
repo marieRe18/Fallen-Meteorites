@@ -22,6 +22,7 @@ public struct Constants {
     public struct Errors {
         public static let parsingError = "Error when parsing response data."
         public static let noInternetConnectionError = "No internet connection."
+        public static let unexpectedError = "Unexpected error occured while fetching data from the internet."
     }
 
     public struct Colors {

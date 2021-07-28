@@ -23,7 +23,6 @@ public final class DatabaseService {
         do {
             try context?.execute(deleteRequest)
         } catch let error as NSError {
-            // -MR- Comment: handle?
             debugPrint("Could not delete objects in database. \(error), \(error.userInfo)")
         }
     }
@@ -34,7 +33,6 @@ public final class DatabaseService {
         DispatchQueue.main.async { [weak self] in
             self?.emptyDb()
             meteorites.enumerated().forEach { index, meteorite in
-                // -MR- Comment: mazani db
                 let meteoriteEntity = MeteoriteDb(context: safeContext)
                 meteoriteEntity.id = index.description
                 meteoriteEntity.name = meteorite.name

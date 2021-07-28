@@ -18,9 +18,6 @@ protocol MeteoritesListViewModelDelegate: AnyObject {
 }
 
 final class MeteoritesListViewModel {
-    // -MR- Comment: Remove prototype data
-//    private var meteorites = [Meteorite]()
-
     weak var delegate: MeteoritesListViewModelDelegate?
 
     private var meteoriteRequester: MeteoriteRequester
@@ -33,16 +30,10 @@ final class MeteoritesListViewModel {
     }
 
     private func process(meteorites: [Meteorite]) {
-
         self.meteorites = meteorites
             .sorted { $0.size.value > $1.size.value }
 
             delegate?.refreshData()
-        
-// -MR- Comment: delete
-//        self.meteorites.forEach { meteorite in
-//            print(meteorite.size.value)
-//        }
     }
 
     func loadMeteorites() {
@@ -96,9 +87,3 @@ extension UIImage {
         return image//withRenderingMode(.alwaysTemplate)
     }
 }
-
-// -MR- Comment: remove
-//        let meteor1 = Meteorite(name: "Dormamu", size: .big, location: CLLocationCoordinate2D(latitude: 16.60, longitude: 49.195))
-//        let meteor2 = Meteorite(name: "Merdok", size: .small, location: CLLocationCoordinate2D(latitude: 16.60, longitude: 49.195))
-//        let meteor3 = Meteorite(name: "Gingle", size: .medium, location: CLLocationCoordinate2D(latitude: 21.282778, longitude: -157.829444))
-//        self.meteorites = [meteor1, meteor2, meteor3]

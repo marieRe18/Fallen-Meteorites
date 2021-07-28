@@ -30,14 +30,14 @@ final class MeteoriteRequester {
             headers: [Constants.appTokenValue: Constants.appToken]
         )
         .validate().responseJSON(queue: .main) { response in
-// -MR- Comment: generalizace
             switch response.result {
             case .success:
                 print(response)
                 do {
                     guard let data = response.data else {
                         DispatchQueue.main.async {
-                            single(.failure(MeteoriteRequesterError.parsingError))
+                            debugPrint(MeteoriteRequesterError.parsingError)
+                            single(.failure(MeteoriteRequesterError.unexpectedError))
                         }
                         return
                     }
@@ -48,11 +48,13 @@ final class MeteoriteRequester {
                     }
                 } catch {
                     DispatchQueue.main.async {
-                        single(.failure(MeteoriteRequesterError.parsingError))
+                        debugPrint(MeteoriteRequesterError.parsingError)
+                        single(.failure(MeteoriteRequesterError.unexpectedError))
                     }
                 }
             case let .failure(error):
                 debugPrint(error)
+                single(.failure(error))
             }
         }
             return Disposables.create()
@@ -63,6 +65,7 @@ final class MeteoriteRequester {
 enum MeteoriteRequesterError: LocalizedError {
     case parsingError
     case noInternetConnection
+    case unexpectedError
 
     var errorDescription: String? {
         switch self {
@@ -70,6 +73,8 @@ enum MeteoriteRequesterError: LocalizedError {
             return Constants.Errors.parsingError
         case .noInternetConnection:
             return Constants.Errors.noInternetConnectionError
+        case .unexpectedError:
+            return Constants.Errors.unexpectedError
         }
     }
 }
