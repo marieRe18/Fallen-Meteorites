@@ -23,17 +23,17 @@ enum Level: Int {
     case medium
     case big
 
-    var color: UIColor {
+    var multiplier: CGFloat {
         get {
             switch self {
             case .unknown:
-                return UIColor.white
+                return 1
             case .small:
-                return UIColor.yellow
+                return 1.2
             case .medium:
-                return UIColor.orange
+                return 1.4
             case .big:
-                return UIColor.red
+                return 1.6
             }
         }
     }

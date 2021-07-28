@@ -5,18 +5,20 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Fallen meteorites-->
         <scene sceneID="PKL-XC-Se8">
             <objects>
-                <tableViewController id="bk7-nv-5Ce" customClass="MeteoritesListViewController" customModule="Fallen_Meteorites" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="MeteoritesListViewController" id="bk7-nv-5Ce" customClass="MeteoritesListViewController" customModule="Fallen_Meteorites" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="KH5-86-0gk">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" red="0.13724720479999999" green="0.1607225239" blue="0.19600412249999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="tintColor" red="0.13724720479999999" green="0.1607225239" blue="0.19600412249999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="separatorColor" red="0.47465276719999999" green="0.48222911359999998" blue="0.56845408679999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="sectionIndexBackgroundColor" red="0.47465276719999999" green="0.48222911359999998" blue="0.56845408679999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MeteoritesListIemCell" id="hNN-VB-Xp2">
                                 <rect key="frame" x="0.0" y="24.5" width="414" height="70.5"/>
@@ -32,10 +34,10 @@
                                                 <constraint firstAttribute="height" constant="50" id="qZR-13-Fba"/>
                                             </constraints>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Meteorites name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rlq-7f-rGM">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Meteorites name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rlq-7f-rGM">
                                             <rect key="frame" x="95" y="21" width="284" height="28.5"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
+                                            <color key="textColor" red="0.9332844615" green="0.93336725229999995" blue="0.93321532009999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
@@ -49,6 +51,7 @@
                                         <constraint firstItem="SgJ-qP-w81" firstAttribute="leading" secondItem="me2-we-DLf" secondAttribute="leading" constant="15" id="w9X-WF-Obp"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <color key="backgroundColor" red="0.47465276719999999" green="0.48222911359999998" blue="0.56845408679999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
                                     <segue destination="FP3-jd-NbN" kind="presentation" identifier="goToMap" id="X8F-Cy-ouJ"/>
                                 </connections>
@@ -68,35 +71,26 @@
         <!--Map View Controller-->
         <scene sceneID="Qnx-2c-Qla">
             <objects>
-                <viewController id="FP3-jd-NbN" customClass="MapViewController" customModule="Fallen_Meteorites" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MapViewController" id="FP3-jd-NbN" customClass="MapViewController" customModule="Fallen_Meteorites" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3TZ-4a-goN">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="9ar-DK-QKP">
-                                <rect key="frame" x="0.0" y="65.5" width="414" height="776.5"/>
+                                <rect key="frame" x="0.0" y="15" width="414" height="827"/>
                             </mapView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VYZ-QC-AjW">
-                                <rect key="frame" x="15" y="30" width="384" height="20.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="bHe-Ob-ypt"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" red="0.22743797299999999" green="0.24700993299999999" blue="0.27835077050000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="tintColor" red="0.14962541309999999" green="0.2195076658" blue="0.71330018839999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="9ar-DK-QKP" firstAttribute="leading" secondItem="bHe-Ob-ypt" secondAttribute="leading" id="EJm-P8-Ajm"/>
-                            <constraint firstItem="bHe-Ob-ypt" firstAttribute="trailing" secondItem="VYZ-QC-AjW" secondAttribute="trailing" constant="15" id="GAH-Gg-bFb"/>
-                            <constraint firstItem="VYZ-QC-AjW" firstAttribute="leading" secondItem="bHe-Ob-ypt" secondAttribute="leading" constant="15" id="RN1-dh-9Qp"/>
                             <constraint firstItem="bHe-Ob-ypt" firstAttribute="trailing" secondItem="9ar-DK-QKP" secondAttribute="trailing" id="cNl-X9-vd0"/>
-                            <constraint firstItem="9ar-DK-QKP" firstAttribute="top" secondItem="VYZ-QC-AjW" secondAttribute="bottom" constant="15" id="gPU-Y3-7cY"/>
                             <constraint firstAttribute="bottom" secondItem="9ar-DK-QKP" secondAttribute="bottom" id="kbV-Lw-G81"/>
-                            <constraint firstItem="VYZ-QC-AjW" firstAttribute="top" secondItem="bHe-Ob-ypt" secondAttribute="top" constant="30" id="ktJ-wc-1wA"/>
+                            <constraint firstItem="9ar-DK-QKP" firstAttribute="top" secondItem="bHe-Ob-ypt" secondAttribute="top" constant="15" id="szX-G6-RPW"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="location" destination="VYZ-QC-AjW" id="j1w-EC-qCe"/>
                         <outlet property="mapView" destination="9ar-DK-QKP" id="gWw-sT-SfV"/>
                     </connections>
                 </viewController>
@@ -108,9 +102,14 @@
         <scene sceneID="f13-6m-1gQ">
             <objects>
                 <navigationController id="HwX-Da-2sd" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="utt-OI-4Bq">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="utt-OI-4Bq">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" red="0.064234964549999995" green="0.01829280145" blue="0.3017384112" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="barTintColor" red="0.13724720479999999" green="0.1607225239" blue="0.19600412249999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" red="0.9332844615" green="0.93336725229999995" blue="0.93321532009999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </textAttributes>
                     </navigationBar>
                     <connections>
                         <segue destination="bk7-nv-5Ce" kind="relationship" relationship="rootViewController" id="TrF-dj-dtL"/>
@@ -121,9 +120,4 @@
             <point key="canvasLocation" x="-1670" y="-42"/>
         </scene>
     </scenes>
-    <resources>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-    </resources>
 </document>

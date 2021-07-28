@@ -23,6 +23,13 @@
 		2F80EC5C26AAAF2D000DCF79 /* MeteoriteRequester.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F80EC5B26AAAF2D000DCF79 /* MeteoriteRequester.swift */; };
 		2F80EC5E26AB0334000DCF79 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F80EC5D26AB0334000DCF79 /* Constants.swift */; };
 		2F80EC6026AB0407000DCF79 /* Size.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F80EC5F26AB0407000DCF79 /* Size.swift */; };
+		2FD64E6F26AFFA6C00F95B91 /* MeteoriteDbKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD64E6E26AFFA6C00F95B91 /* MeteoriteDbKeys.swift */; };
+		2FD64E7126B026D500F95B91 /* UserSettingsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD64E7026B026D500F95B91 /* UserSettingsService.swift */; };
+		2FD64E7426B0290200F95B91 /* UserSettingsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD64E7326B0290200F95B91 /* UserSettingsProvider.swift */; };
+		2FD64E7626B034F300F95B91 /* DatabaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD64E7526B034F300F95B91 /* DatabaseService.swift */; };
+		2FD64E7926B03DD800F95B91 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD64E7826B03DD800F95B91 /* NetworkService.swift */; };
+		2FD64E7B26B0473100F95B91 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD64E7A26B0473100F95B91 /* UIViewController+Extension.swift */; };
+		2FD64E7D26B18B8B00F95B91 /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD64E7C26B18B8B00F95B91 /* UIImage+Extension.swift */; };
 		F0933525F23CAA979FFE447D /* Pods_Fallen_Meteorites.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E841415454AA586D496734AC /* Pods_Fallen_Meteorites.framework */; };
 /* End PBXBuildFile section */
 
@@ -45,6 +52,13 @@
 		2F80EC5B26AAAF2D000DCF79 /* MeteoriteRequester.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeteoriteRequester.swift; sourceTree = "<group>"; };
 		2F80EC5D26AB0334000DCF79 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		2F80EC5F26AB0407000DCF79 /* Size.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Size.swift; sourceTree = "<group>"; };
+		2FD64E6E26AFFA6C00F95B91 /* MeteoriteDbKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeteoriteDbKeys.swift; sourceTree = "<group>"; };
+		2FD64E7026B026D500F95B91 /* UserSettingsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettingsService.swift; sourceTree = "<group>"; };
+		2FD64E7326B0290200F95B91 /* UserSettingsProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettingsProvider.swift; sourceTree = "<group>"; };
+		2FD64E7526B034F300F95B91 /* DatabaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseService.swift; sourceTree = "<group>"; };
+		2FD64E7826B03DD800F95B91 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		2FD64E7A26B0473100F95B91 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
+		2FD64E7C26B18B8B00F95B91 /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
 		4920C913B07C35BEBF30D451 /* Pods-Fallen Meteorites.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fallen Meteorites.debug.xcconfig"; path = "Target Support Files/Pods-Fallen Meteorites/Pods-Fallen Meteorites.debug.xcconfig"; sourceTree = "<group>"; };
 		B0F1B9EB3B8E5DFFAB118F65 /* Pods-Fallen Meteorites.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fallen Meteorites.release.xcconfig"; path = "Target Support Files/Pods-Fallen Meteorites/Pods-Fallen Meteorites.release.xcconfig"; sourceTree = "<group>"; };
 		E841415454AA586D496734AC /* Pods_Fallen_Meteorites.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Fallen_Meteorites.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -96,7 +110,9 @@
 				2F80EC5D26AB0334000DCF79 /* Constants.swift */,
 				2F80EC4226A972B9000DCF79 /* List */,
 				2F80EC4F26AA963E000DCF79 /* Map */,
+				2FD64E7726B034F700F95B91 /* Database */,
 				2F80EC6126AB0858000DCF79 /* Network */,
+				2FD64E7226B026D900F95B91 /* Services */,
 				2F80EC5A26AAAA25000DCF79 /* Extensions */,
 				2F80EC3426A7FCF2000DCF79 /* Assets.xcassets */,
 				2F80EC5026AA9C3B000DCF79 /* Main.storyboard */,
@@ -130,6 +146,7 @@
 			children = (
 				2F80EC4526A974AC000DCF79 /* Meteorite.swift */,
 				2F80EC5F26AB0407000DCF79 /* Size.swift */,
+				2FD64E6E26AFFA6C00F95B91 /* MeteoriteDbKeys.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -181,6 +198,8 @@
 			children = (
 				2F80EC4926A99422000DCF79 /* Collection+Extension.swift */,
 				2F80EC5826AAAA1E000DCF79 /* MKMapView+Extension.swift */,
+				2FD64E7A26B0473100F95B91 /* UIViewController+Extension.swift */,
+				2FD64E7C26B18B8B00F95B91 /* UIImage+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -189,8 +208,26 @@
 			isa = PBXGroup;
 			children = (
 				2F80EC5B26AAAF2D000DCF79 /* MeteoriteRequester.swift */,
+				2FD64E7826B03DD800F95B91 /* NetworkService.swift */,
 			);
 			path = Network;
+			sourceTree = "<group>";
+		};
+		2FD64E7226B026D900F95B91 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				2FD64E7026B026D500F95B91 /* UserSettingsService.swift */,
+				2FD64E7326B0290200F95B91 /* UserSettingsProvider.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		2FD64E7726B034F700F95B91 /* Database */ = {
+			isa = PBXGroup;
+			children = (
+				2FD64E7526B034F300F95B91 /* DatabaseService.swift */,
+			);
+			path = Database;
 			sourceTree = "<group>";
 		};
 		3AE46486C328CB8EB36B9A23 /* Frameworks */ = {
@@ -315,11 +352,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2FD64E7626B034F300F95B91 /* DatabaseService.swift in Sources */,
+				2FD64E7426B0290200F95B91 /* UserSettingsProvider.swift in Sources */,
+				2FD64E6F26AFFA6C00F95B91 /* MeteoriteDbKeys.swift in Sources */,
+				2FD64E7B26B0473100F95B91 /* UIViewController+Extension.swift in Sources */,
 				2F80EC3326A7FCEF000DCF79 /* Fallen_Meteorites.xcdatamodeld in Sources */,
+				2FD64E7926B03DD800F95B91 /* NetworkService.swift in Sources */,
 				2F80EC4A26A99422000DCF79 /* Collection+Extension.swift in Sources */,
+				2FD64E7D26B18B8B00F95B91 /* UIImage+Extension.swift in Sources */,
 				2F80EC4626A974AC000DCF79 /* Meteorite.swift in Sources */,
 				2F80EC5926AAAA1E000DCF79 /* MKMapView+Extension.swift in Sources */,
 				2F80EC4426A972F5000DCF79 /* MeteoritesListViewModel.swift in Sources */,
+				2FD64E7126B026D500F95B91 /* UserSettingsService.swift in Sources */,
 				2F80EC2D26A7FCEF000DCF79 /* MeteoritesListViewController.swift in Sources */,
 				2F80EC2926A7FCEF000DCF79 /* AppDelegate.swift in Sources */,
 				2F80EC5626AAA6AB000DCF79 /* Place.swift in Sources */,
@@ -470,7 +514,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = QMBHBQYC3Y;
 				INFOPLIST_FILE = "Fallen Meteorites/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -491,7 +535,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = QMBHBQYC3Y;
 				INFOPLIST_FILE = "Fallen Meteorites/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
