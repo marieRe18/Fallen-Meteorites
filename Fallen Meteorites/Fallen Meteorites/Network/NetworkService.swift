@@ -10,18 +10,11 @@ import RxSwift
 
 public final class NetworkService {
 
+    public static let shared: NetworkService = NetworkService(monitor: NWPathMonitor())
+
     private let monitor: NWPathMonitor
 
-//    public var isConnected: Single<Bool> {
-//        return Single<Bool>.create(subscribe: { single -> Disposable in
-//            self.monitor.pathUpdateHandler = { path in
-//                single(.success(path.status == .satisfied) )
-//            }
-//            return Disposables.create()
-//        })
     public var isConnected = false
-
-    public static let shared: NetworkService = NetworkService(monitor: NWPathMonitor())
 
     private init(monitor: NWPathMonitor) {
         self.monitor = monitor
@@ -33,5 +26,9 @@ public final class NetworkService {
         }
         let queue = DispatchQueue(label: "Internet connection monitor")
         monitor.start(queue: queue)
+    }
+
+    public func stop() {
+        monitor.cancel()
     }
 }

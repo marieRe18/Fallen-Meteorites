@@ -9,8 +9,6 @@ import UIKit
 import MapKit
 
 final class MapViewController: UIViewController {
-
-    @IBOutlet weak var location: UILabel!
     @IBOutlet weak var mapView: MKMapView!
 
     private var viewModel: MapViewModel
@@ -31,8 +29,6 @@ final class MapViewController: UIViewController {
     }
 
     private func setUpLayout() {
-        // -MR- Comment: dodelat
-//        location.text = meteorite?.name
         setLocation()
     }
 

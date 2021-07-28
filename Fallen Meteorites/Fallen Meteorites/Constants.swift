@@ -55,10 +55,8 @@ public struct Constants {
     }
 
     struct Colors {
-        public static let darkBlue = #colorLiteral(red: 0.5459182858, green: 0.2666829228, blue: 0.4077201486, alpha: 1)
-        public static let standardBlue = #colorLiteral(red: 0.333951056, green: 0.2232597172, blue: 0.3958826065, alpha: 1)
+        public static let darkBlue = #colorLiteral(red: 0.227437973, green: 0.247009933, blue: 0.2783507705, alpha: 1)
         public static let standardWhite = #colorLiteral(red: 0.9332844615, green: 0.9333672523, blue: 0.9332153201, alpha: 1)
-        public static let standardGray = #colorLiteral(red: 1, green: 0.3968307376, blue: 0.3963495791, alpha: 1)
 
     }
 }

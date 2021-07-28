@@ -24,9 +24,7 @@ class MeteoritesListViewController: UITableViewController {
         viewModel = MeteoritesListViewModel()
         userSettingsProvider = UserSettingsProvider.shared
         databaseService = DatabaseService()
-
         super.init(coder: coder)
-
         viewModel.delegate = self
     }
 

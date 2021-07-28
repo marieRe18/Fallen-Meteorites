@@ -37,6 +37,7 @@ enum Level: Int {
             }
         }
     }
+    // -MR- Comment: delete?
 //    var color: UIColor {
 //        get {
 //            switch self {

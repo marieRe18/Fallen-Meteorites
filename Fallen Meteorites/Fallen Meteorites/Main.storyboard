@@ -13,10 +13,10 @@
             <objects>
                 <tableViewController storyboardIdentifier="MeteoritesListViewController" id="bk7-nv-5Ce" customClass="MeteoritesListViewController" customModule="Fallen_Meteorites" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="KH5-86-0gk">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.064234964549999995" green="0.01829280145" blue="0.3017384112" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <color key="separatorColor" red="0.083830900489999999" green="0.12071884419999999" blue="0.38405621049999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.13724720479999999" green="0.1607225239" blue="0.19600412249999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="separatorColor" red="0.47465276719999999" green="0.48222911359999998" blue="0.56845408679999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MeteoritesListIemCell" id="hNN-VB-Xp2">
                                 <rect key="frame" x="0.0" y="24.5" width="414" height="70.5"/>
@@ -100,11 +100,11 @@
         <scene sceneID="f13-6m-1gQ">
             <objects>
                 <navigationController id="HwX-Da-2sd" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="utt-OI-4Bq">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="utt-OI-4Bq">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" red="0.064234964549999995" green="0.01829280145" blue="0.3017384112" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <color key="barTintColor" red="0.33395105600000002" green="0.22325971720000001" blue="0.39588260650000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="barTintColor" red="0.13724720479999999" green="0.1607225239" blue="0.19600412249999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <textAttributes key="titleTextAttributes">
                             <color key="textColor" red="0.9332844615" green="0.93336725229999995" blue="0.93321532009999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </textAttributes>
