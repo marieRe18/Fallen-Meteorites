@@ -5,7 +5,6 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -76,29 +75,20 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="9ar-DK-QKP">
-                                <rect key="frame" x="0.0" y="65.5" width="414" height="776.5"/>
+                                <rect key="frame" x="0.0" y="15" width="414" height="827"/>
                             </mapView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VYZ-QC-AjW">
-                                <rect key="frame" x="15" y="30" width="384" height="20.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="bHe-Ob-ypt"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="tintColor" red="0.14962541309999999" green="0.2195076658" blue="0.71330018839999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="9ar-DK-QKP" firstAttribute="leading" secondItem="bHe-Ob-ypt" secondAttribute="leading" id="EJm-P8-Ajm"/>
-                            <constraint firstItem="bHe-Ob-ypt" firstAttribute="trailing" secondItem="VYZ-QC-AjW" secondAttribute="trailing" constant="15" id="GAH-Gg-bFb"/>
-                            <constraint firstItem="VYZ-QC-AjW" firstAttribute="leading" secondItem="bHe-Ob-ypt" secondAttribute="leading" constant="15" id="RN1-dh-9Qp"/>
                             <constraint firstItem="bHe-Ob-ypt" firstAttribute="trailing" secondItem="9ar-DK-QKP" secondAttribute="trailing" id="cNl-X9-vd0"/>
-                            <constraint firstItem="9ar-DK-QKP" firstAttribute="top" secondItem="VYZ-QC-AjW" secondAttribute="bottom" constant="15" id="gPU-Y3-7cY"/>
                             <constraint firstAttribute="bottom" secondItem="9ar-DK-QKP" secondAttribute="bottom" id="kbV-Lw-G81"/>
-                            <constraint firstItem="VYZ-QC-AjW" firstAttribute="top" secondItem="bHe-Ob-ypt" secondAttribute="top" constant="30" id="ktJ-wc-1wA"/>
+                            <constraint firstItem="9ar-DK-QKP" firstAttribute="top" secondItem="bHe-Ob-ypt" secondAttribute="top" constant="15" id="szX-G6-RPW"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="location" destination="VYZ-QC-AjW" id="j1w-EC-qCe"/>
                         <outlet property="mapView" destination="9ar-DK-QKP" id="gWw-sT-SfV"/>
                     </connections>
                 </viewController>
@@ -128,9 +118,4 @@
             <point key="canvasLocation" x="-1670" y="-42"/>
         </scene>
     </scenes>
-    <resources>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-    </resources>
 </document>

@@ -60,6 +60,7 @@ class MeteoritesListViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         selectedMeteorite = viewModel.meteorites[safe: indexPath.row]
         performSegue(withIdentifier: "goToMap", sender: self)
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }
 
