@@ -10,9 +10,10 @@ final class MapViewModel {
         didSet {
             guard let safeMeteorite = meteorite else { return }
 
+            let mass = "Mass: \(safeMeteorite.size.value)"
             meteoritesPlace = Place(
                 meteoriteName: safeMeteorite.name,
-                locationName: "Tady",
+                locationName: mass,
                 coordinate: safeMeteorite.location
             )
         }
